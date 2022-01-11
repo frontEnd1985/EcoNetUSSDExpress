@@ -7,6 +7,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var xmlparser = require("express-xml-bodyparser");
+var incomingRouter = require("./routes/incoming/incoming.routes");
 
 var app = express();
 
@@ -23,6 +24,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/econetchampions", incomingRouter);
+
+// http://159.159.10.14:7474/econetchampions/Notify?user
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
